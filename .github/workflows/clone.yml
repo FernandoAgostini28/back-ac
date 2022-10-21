@@ -25,11 +25,11 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/src/**
-          fileToExclude.txt
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/src/**
+            fileToExclude.txt
 
           
   # - name: Copy folder content recursively to remote
