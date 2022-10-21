@@ -5,19 +5,21 @@ on:
     branches: [ main ]
 
 jobs:
-  deploy-to-server:
-    runs-on: ubuntu-latest
+  web-deploy:
+    name: 🎉 Deploy
     steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2
 
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run build
-        run: npm run build 
+    - name: Use Node.js 14
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+      
+    - name: 🔨 Build Project
+      run: |
+        npm install
+        npm run build 
 
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
