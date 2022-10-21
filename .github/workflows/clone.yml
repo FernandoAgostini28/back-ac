@@ -5,11 +5,11 @@ on:
     branches: [ main ]
 
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  deploy:
+    name: Deploy
     steps:
 
-      - name: 🚚 Get latest code
+      - name: Get latest code
         uses: actions/checkout@v2
 
       - name: Use Node.js 14
@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: '14.17.6'
 
-      - name: 🔨 Build Project
+      - name: Build Project
         run: |
           npm install
           npm run build 
