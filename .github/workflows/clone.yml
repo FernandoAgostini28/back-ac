@@ -15,6 +15,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        run: npm run build
 
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
@@ -23,6 +24,12 @@ jobs:
           port: 65100
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
+          exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/src/**
+          fileToExclude.txt
 
           
   # - name: Copy folder content recursively to remote
