@@ -32,6 +32,5 @@ jobs:
   #     host: 127.0.0.1
   #     port: 65100
   #     username: act2022
-  #     privateKey: ${{secrets.PRIVATE_KEY}}
-  #     
+  #     privateKey: ${{secrets.PRIVATE_KEY}} 
         
