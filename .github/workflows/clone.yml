@@ -36,7 +36,6 @@ jobs:
             **/node_modules/**
              **/src/**
             fileToExclude.txt
-
           
   # - name: Copy folder content recursively to remote
   #   uses: garygrossgarten/github-action-scp@release
