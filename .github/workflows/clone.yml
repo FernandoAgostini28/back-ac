@@ -23,18 +23,18 @@ jobs:
           npm install
           npm run build 
 
-      - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          port: 65100
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            **/src/**
+      # - name: FTP Deploy
+      #   uses: SamKirkland/FTP-Deploy-Action@4.3.2
+      #   with:
+      #     server: ${{ secrets.FTP_HOST }}
+      #     port: 65100
+      #     username: ${{ secrets.FTP_USER }}
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     exclude: |
+      #       **/.git*
+      #       **/.git*/**
+      #       **/node_modules/**
+      #       **/src/**
           
   # - name: Copy folder content recursively to remote
   #   uses: garygrossgarten/github-action-scp@release
