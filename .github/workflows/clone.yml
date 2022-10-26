@@ -21,16 +21,16 @@ jobs:
           with:
             node-version: '14.17.6'
 
-        - name: Build back
-          run: |
-            mkdir back-end
-            cd back-end
-            npm ci
-            npm run build 
-            cd ..
+        # - name: Build back
+        #   run: |
+        #     mkdir back-end
+        #     cd back-end
+        #     npm ci
+        #     npm run build 
+        #     cd ..
      
-        - name: Clone web module
-          uses: actions/checkout@v2
+        # - name: Clone web module
+        #   uses: actions/checkout@v2
 
         - name: Get release version
           run: |
@@ -49,6 +49,11 @@ jobs:
             cd back-act
             echo "FRONT_GIT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
             cd ..
+        - name: Build back
+          run: |
+            npm ci
+            npm run build 
+
         # - name: Build front
         #   run: |
         #     cd back-act
