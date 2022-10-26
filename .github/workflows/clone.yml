@@ -73,10 +73,10 @@ jobs:
           ls ${{ github.workspace }}/front-act
       - name: List files in the repository dist
         run: |
-          ls ${{ github.workspace }}/front-act/dist
+          ls ${{ github.workspace }}/dist
       - name: List files in the repository build
         run: |
-          ls ${{ github.workspace }}/build
+          ls ${{ github.workspace }}/front-act/build
       - name: List files in the repository 
         run: |
           ls ${{ github.workspace }}
