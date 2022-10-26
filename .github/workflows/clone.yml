@@ -41,7 +41,7 @@ jobs:
         
         - name: Build front
           run: |
-            cd ../back-act
+            cd back-act
             npm run build --base-href /public/
        
         - name: List files in the repository
