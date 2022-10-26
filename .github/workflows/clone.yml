@@ -32,23 +32,23 @@ jobs:
         # - name: Clone web module
         #   uses: actions/checkout@v2
 
-        # - name: Get release version
-        #   run: |
-        #     echo "RELEASE_VERSION=${BRANCH##*/}" >> $GITHUB_ENV
-        # - name: Clone web module
-        #   uses: actions/checkout@v2
-        #   with:
-        #     fetch-depth: 0
-        #     repository: FernandoAgostini28/front-ac
-        #     path: 'back-act'
-        #     token: ${{ secrets.G_ACCESS_TOKEN }}
+        - name: Get release version
+          run: |
+            echo "RELEASE_VERSION=${BRANCH##*/}" >> $GITHUB_ENV
+        - name: Clone web module
+          uses: actions/checkout@v2
+          with:
+            fetch-depth: 0
+            repository: FernandoAgostini28/front-ac
+            path: 'front-act'
+            token: ${{ secrets.G_ACCESS_TOKEN }}
 
-        # - name: Get front module hash
-        #   run: |
-        #     pwd
-        #     cd back-act
-        #     echo "FRONT_GIT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
-        #     cd ..
+        - name: Get front module hash
+          run: |
+            pwd
+            cd ../front-act
+            echo "FRONT_GIT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
+            cd ..
 
         - name: Build back
           run: |
