@@ -40,17 +40,17 @@ jobs:
           echo "FRONT_GIT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
           cd ..
 
-      - name: Build Project
-        run: |
-          npm install
-          npm run build 
+      # - name: Build Project
+      #   run: |
+      #     npm install
+      #     npm run build 
 
-      - name: Upload artifacts to be used in next job
-        if: success()
-        uses: actions/upload-artifact@v1
-        with:
-          name: dist
-          path: dist
+      # - name: Upload artifacts to be used in next job
+      #   if: success()
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: dist
+      #     path: dist
 
       - name: list arquivos
         run: |
@@ -59,8 +59,9 @@ jobs:
       - name: Build front
         run: |
           cd front-act
-          npm ci
-          npm run build --base-href /public/
+          ls fornt-act
+      # npm ci
+      # npm run build --base-href /public/
 
         # - name: Copy ionic output to web module
         #   run: |
