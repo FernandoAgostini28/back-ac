@@ -60,8 +60,10 @@ jobs:
           ls -a
           cd back-copi
           ls -a
-          mv front-act ${{ github.workspace }}
           cd ..
+          
+        # mv front-act ${{ github.workspace }}
+        # cd ..
           ls -a
 
       - name: Build front
