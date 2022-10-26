@@ -43,14 +43,16 @@ jobs:
             path: 'back-act'
             token: ${{ secrets.G_ACCESS_TOKEN }}
 
-        - name: Get front module hash
-          run: |
-            pwd
-            cd back-act
-            echo "FRONT_GIT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
-            cd ..
+        # - name: Get front module hash
+        #   run: |
+        #     pwd
+        #     cd back-act
+        #     echo "FRONT_GIT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
+        #     cd ..
+
         - name: Build back
           run: |
+            ls -a
             npm ci
             npm run build 
 
