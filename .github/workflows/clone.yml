@@ -47,5 +47,5 @@ jobs:
        
         - name: List files in the repository
           run: |
-            ls ${{ github.workspace }}/back-act
+            ls ${{ github.workspace }}/public
 
