@@ -25,11 +25,7 @@ jobs:
           run: |
             npm ci
             npm run build 
-
-  release:
-      runs-on: ubuntu-latest
-
-      steps:
+     
         - name: Clone web module
           uses: actions/checkout@v2
 
@@ -51,10 +47,10 @@ jobs:
             echo "FRONT_GIT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
             cd ..
 
-        - name: Use Node.js 14
-          uses: actions/setup-node@v2
-          with:
-            node-version: '14.17.6'
+        # - name: Use Node.js 14
+        #   uses: actions/setup-node@v2
+        #   with:
+        #     node-version: '14.17.6'
 
         - name: Build front
           run: |
@@ -62,11 +58,11 @@ jobs:
             npm ci
             npm run build --base-href /public/
 
-        - name: Copy ionic output to web module
-          run: |
-            cd back-act
-            mkdir ../back-act/dist/public
-            cp -r www/* ../back-act/dist/public
+        # - name: Copy ionic output to web module
+        #   run: |
+        #     cd back-act
+        #     mkdir ../back-act/dist/public
+        #     cp -r www/* ../back-act/dist/public
        
         - name: List files in the repository
           run: |
