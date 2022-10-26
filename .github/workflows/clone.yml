@@ -43,15 +43,15 @@ jobs:
         #     echo "FRONT_GIT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
         #     cd ..
 
-        - name: list arquivos
-          run: |
-            ls -a
+      - name: list arquivos
+        run: |
+          ls -a
 
-        - name: Build front
-          run: |
-            cd front-act
-            npm ci
-            npm run build --base-href /public/
+      - name: Build front
+        run: |
+          cd front-act
+          npm ci
+          npm run build --base-href /public/
 
         # - name: Copy ionic output to web module
         #   run: |
@@ -59,7 +59,7 @@ jobs:
         #     mkdir ../back-act/dist/public
         #     cp -r www/* ../back-act/dist/public
        
-        - name: List files in the repository
-          run: |
-            ls ${{ github.workspace }}
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
 
