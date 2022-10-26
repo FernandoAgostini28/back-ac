@@ -48,10 +48,9 @@ jobs:
 
       - name: list arquivos
         run: |
-          cd ..
+          
           mkdir back-copi
           cp -r back-copi  back-ac 
-          ls -a
           cd back-copi
           ls -a
           cd ..
