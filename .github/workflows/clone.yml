@@ -36,7 +36,6 @@ jobs:
 
       - name: Build Project
         run: |
-          cd ..
           npm install
           npm run build 
 
@@ -53,6 +52,7 @@ jobs:
 
       - name: Build front
         run: |
+          cd ..
           cd front-act
           ls  -a
           npm ci
