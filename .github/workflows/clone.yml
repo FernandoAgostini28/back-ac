@@ -14,12 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Get latest code
-        uses: actions/checkout@v2
-
-        
-      
-
       - name: Clone web module
         uses: actions/checkout@v2
       - name: Get release version
@@ -60,9 +54,6 @@ jobs:
           cd back-copi
           ls -a
           cd ..
-          
-        # mv front-act ${{ github.workspace }}
-        # cd ..
           ls -a
 
       - name: Build front
