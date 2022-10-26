@@ -23,8 +23,11 @@ jobs:
 
         - name: Build back
           run: |
+            mkdir back-end
+            cd back-end
             npm ci
             npm run build 
+            cd ..
      
         - name: Clone web module
           uses: actions/checkout@v2
@@ -46,17 +49,11 @@ jobs:
             cd back-act
             echo "FRONT_GIT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
             cd ..
-
-        # - name: Use Node.js 14
-        #   uses: actions/setup-node@v2
-        #   with:
-        #     node-version: '14.17.6'
-
-        - name: Build front
-          run: |
-            cd back-act
-            npm ci
-            npm run build --base-href /public/
+        # - name: Build front
+        #   run: |
+        #     cd back-act
+        #     npm ci
+        #     npm run build --base-href /public/
 
         # - name: Copy ionic output to web module
         #   run: |
