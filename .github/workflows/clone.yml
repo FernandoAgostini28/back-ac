@@ -25,12 +25,13 @@ jobs:
         run: |
           npm install
           npm run build
-      - name: Upload artifacts to be used in next job
-        if: success()
-        uses: actions/upload-artifact@v1
-        with:
-          name: dist
-          path: dist
+
+      # - name: Upload artifacts to be used in next job
+      #   if: success()
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: dist
+      #     path: dist
         # - name: Clone web module
         #   uses: actions/checkout@v2
         # - name: Get release version
