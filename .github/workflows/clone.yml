@@ -59,7 +59,7 @@ jobs:
       - name: Build front
         run: |
           cd front-act
-          ls front-act -a
+          ls  -a
       # npm ci
       # npm run build --base-href /public/
 
