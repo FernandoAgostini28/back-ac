@@ -18,17 +18,7 @@ jobs:
         uses: actions/checkout@v2
 
         
-      - name: Build Project
-        run: |
-          npm install
-          npm run build 
-
-      - name: Upload artifacts to be used in next job
-        if: success()
-        uses: actions/upload-artifact@v1
-        with:
-          name: dist
-          path: dist
+      
 
       - name: Clone web module
         uses: actions/checkout@v2
@@ -43,12 +33,24 @@ jobs:
           path: 'front-act'
           token: ${{ secrets.G_ACCESS_TOKEN }}
 
-        # - name: Get front module hash
-        #   run: |
-        #     pwd
-        #     cd front-act
-        #     echo "FRONT_GIT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
-        #     cd ..
+      - name: Get front module hash
+        run: |
+          pwd
+          cd front-act
+          echo "FRONT_GIT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
+          cd ..
+
+      - name: Build Project
+        run: |
+          npm install
+          npm run build 
+
+      - name: Upload artifacts to be used in next job
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: dist
+          path: dist
 
       - name: list arquivos
         run: |
@@ -68,5 +70,5 @@ jobs:
        
       - name: List files in the repository
         run: |
-          ls ${{ github.workspace }}
+          ls ${{ github.workspace }}/front-act
 
