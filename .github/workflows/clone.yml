@@ -1,69 +1,40 @@
 name: deploy to a server on push
 
-on:
-  workflow_dispatch:
-  push:
-    branches: [ main ]
+  on:
+    push:
+      branches:
+        - main
+
+  env:
+    BRANCH: ${{ github.ref }}
 
 jobs:
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    steps:
+  release:
+      runs-on: ubuntu-latest
 
-      - name: Get latest code
-        uses: actions/checkout@v2
+      steps:
+        - name: Clone web module
+          uses: actions/checkout@v2
 
-      # - name: Use Node.js 14
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: '14.17.6'
+        - name: Get release version
+          run: |
+            echo "RELEASE_VERSION=${BRANCH##*/}" >> $GITHUB_ENV
+        - name: Clone web module
+          uses: actions/checkout@v2
+          with:
+            fetch-depth: 0
+            repository: testes/back-act
+            path: 'back-act'
+            token: ${{ secrets.G_ACCESS_TOKEN }}
 
-      - name: Build Project backend
-        run: |
-          echo "Deploy backend"
-          sleep 10s 
-      - name: Build Project frontend
-        run: |
-          echo "Deploy frontend"
-          sleep 10s
-      - uses: convictional/trigger-workflow-and-wait@v1.3.0
-        with:
-          owner: FernandoAgostini28
-          repo: front-ac
-          github_token: ${{ secrets.G_ACCESS_TOKEN }}
-          workflow_file_name: build-back.yml
-          # ref: main
-      - name: Final Front
-        run: |
-          echo "final frontend"
-          sleep 10s
+        - name: Get front module hash
+          run: |
+            pwd
+            cd back-act
+            echo "FRONT_GIT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
+            cd ..
+       
+        - name: List files in the repository
+          run: |
+            ls ${{ github.workspace }}/back-act
 
-      # - name: Build Project
-      #   run: |
-      #     npm install
-      #     npm run build 
-
-      # - name: FTP Deploy
-      #   uses: SamKirkland/FTP-Deploy-Action@4.3.2
-      #   with:
-      #     server: ${{ secrets.FTP_HOST }}
-      #     port: 65100
-      #     username: ${{ secrets.FTP_USER }}
-      #     password: ${{ secrets.FTP_PASSWORD }}
-      #     exclude: |
-      #       **/.git*
-      #       **/.git*/**
-      #       **/node_modules/**
-      #       **/src/**
-          
-  # - name: Copy folder content recursively to remote
-  #   uses: garygrossgarten/github-action-scp@release
-  #   with:
-  #     local: my-repo
-  #     remote: ~/target/directory
-  #     host: 127.0.0.1
-  #     port: 65100
-  #     username: act2022
-  #     privateKey: ${{secrets.PRIVATE_KEY}} 
-  #     
