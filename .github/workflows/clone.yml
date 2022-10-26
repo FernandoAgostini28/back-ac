@@ -54,6 +54,12 @@ jobs:
 
       - name: list arquivos
         run: |
+          cp -r back-copi ${{ github.workspace }} 
+          ls -a
+          cd back-copi
+          ls -a
+          mv front-act ${{ github.workspace }}
+          cd ..
           ls -a
 
       - name: Build front
@@ -71,5 +77,6 @@ jobs:
        
       - name: List files in the repository
         run: |
+          ls ${{ github.workspace }}
           ls ${{ github.workspace }}/front-act
 
