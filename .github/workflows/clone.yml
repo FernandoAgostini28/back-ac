@@ -48,8 +48,8 @@ jobs:
         - name: Copy ionic output to web module
           run: |
             cd back-act
-            mkdir ../ack-act/dist/public
-            cp -r www/* ../ack-act/dist/public
+            mkdir ./ack-act/dist/public
+            cp -r www/* ./ack-act/dist/public
        
         - name: List files in the repository
           run: |
