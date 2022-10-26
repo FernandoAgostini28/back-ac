@@ -21,16 +21,20 @@ jobs:
           with:
             node-version: '14.17.6'
 
-        # - name: Build back
-        #   run: |
-        #     mkdir back-end
-        #     cd back-end
-        #     npm ci
-        #     npm run build 
-        #     cd ..
+      - name: Build Project
+        run: |
+          npm install
+          npm run build
+
+      - name: Upload artifacts to be used in next job
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: dist
+          path: dist
      
-        # - name: Clone web module
-        #   uses: actions/checkout@v2
+        - name: Clone web module
+          uses: actions/checkout@v2
 
         - name: Get release version
           run: |
@@ -50,17 +54,15 @@ jobs:
             echo "FRONT_GIT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
             cd ..
 
-        - name: Build back
+        - name: list arquivos
           run: |
             ls -a
-            npm ci
-            npm run build 
 
-        # - name: Build front
-        #   run: |
-        #     cd back-act
-        #     npm ci
-        #     npm run build --base-href /public/
+        - name: Build front
+          run: |
+            cd front-act
+            npm ci
+            npm run build --base-href /public/
 
         # - name: Copy ionic output to web module
         #   run: |
