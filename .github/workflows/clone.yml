@@ -17,24 +17,31 @@ jobs:
       - name: Get latest code
         uses: actions/checkout@v2
 
-      # - name: Upload artifacts to be used in next job
-      #   if: success()
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: dist
-      #     path: dist
-        # - name: Clone web module
-        #   uses: actions/checkout@v2
-        # - name: Get release version
-        #   run: |
-        #     echo "RELEASE_VERSION=${BRANCH##*/}" >> $GITHUB_ENV
-        # - name: Clone web module
-        #   uses: actions/checkout@v2
-        #   with:
-        #     fetch-depth: 0
-        #     repository: FernandoAgostini28/front-ac
-        #     path: 'front-act'
-        #     token: ${{ secrets.G_ACCESS_TOKEN }}
+        
+      - name: Build Project
+        run: |
+          npm install
+          npm run build 
+
+      - name: Upload artifacts to be used in next job
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: dist
+          path: dist
+
+      - name: Clone web module
+        uses: actions/checkout@v2
+      - name: Get release version
+        run: |
+          echo "RELEASE_VERSION=${BRANCH##*/}" >> $GITHUB_ENV
+      - name: Clone web module
+        uses: actions/checkout@v2
+        with:
+          etch-depth: 0
+          repository: FernandoAgostini28/front-ac
+          path: 'front-act'
+          token: ${{ secrets.G_ACCESS_TOKEN }}
 
         # - name: Get front module hash
         #   run: |
