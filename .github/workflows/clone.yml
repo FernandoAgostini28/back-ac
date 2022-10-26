@@ -46,7 +46,7 @@ jobs:
         - name: Get front module hash
           run: |
             pwd
-            cd ../front-act
+            cd front-act
             echo "FRONT_GIT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
             cd ..
 
