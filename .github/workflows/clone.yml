@@ -54,6 +54,8 @@ jobs:
 
       - name: list arquivos
         run: |
+          pwd
+          mkdir back-copi
           cp -r back-copi ${{ github.workspace }} 
           ls -a
           cd back-copi
