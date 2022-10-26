@@ -23,7 +23,7 @@ jobs:
 
       - name: Build Project
         run: |
-          npm ci
+          npm install
           npm run build
       - name: Upload artifacts to be used in next job
         if: success()
@@ -31,25 +31,25 @@ jobs:
         with:
           name: dist
           path: dist
-        - name: Clone web module
-          uses: actions/checkout@v2
-        - name: Get release version
-          run: |
-            echo "RELEASE_VERSION=${BRANCH##*/}" >> $GITHUB_ENV
-        - name: Clone web module
-          uses: actions/checkout@v2
-          with:
-            fetch-depth: 0
-            repository: FernandoAgostini28/front-ac
-            path: 'front-act'
-            token: ${{ secrets.G_ACCESS_TOKEN }}
+        # - name: Clone web module
+        #   uses: actions/checkout@v2
+        # - name: Get release version
+        #   run: |
+        #     echo "RELEASE_VERSION=${BRANCH##*/}" >> $GITHUB_ENV
+        # - name: Clone web module
+        #   uses: actions/checkout@v2
+        #   with:
+        #     fetch-depth: 0
+        #     repository: FernandoAgostini28/front-ac
+        #     path: 'front-act'
+        #     token: ${{ secrets.G_ACCESS_TOKEN }}
 
-        - name: Get front module hash
-          run: |
-            pwd
-            cd front-act
-            echo "FRONT_GIT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
-            cd ..
+        # - name: Get front module hash
+        #   run: |
+        #     pwd
+        #     cd front-act
+        #     echo "FRONT_GIT_HASH=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
+        #     cd ..
 
         - name: list arquivos
           run: |
