@@ -19,7 +19,7 @@ jobs:
       - name: Get release version
         run: |
           echo "RELEASE_VERSION=${BRANCH##*/}" >> $GITHUB_ENV
-          
+
       - name: Use Node.js 14
         uses: actions/setup-node@v2
         with:
@@ -58,7 +58,6 @@ jobs:
 
       - name: Build front
         run: |
-          cd ..
           cd front-act
           ls  -a
           npm ci
