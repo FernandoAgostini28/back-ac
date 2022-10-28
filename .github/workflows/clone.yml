@@ -69,7 +69,7 @@ jobs:
           cd front-act
           mkdir ../front-act/www
           mkdir ../front-act/build/public
-          cp -r www/* ..front-act/build/public
+          cp -r ../front-act/www/* ..front-act/build/public
           ls
 
 
