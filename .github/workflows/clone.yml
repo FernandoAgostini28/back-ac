@@ -76,6 +76,7 @@ jobs:
       - name: Pack web module
         run: |
           # Pack
+          cd front-act
           mkdir ../front-act/release
           tar -cvf ../front-act/release/intranet-web-${{ env.RELEASE_VERSION }}.tar.gz dist package.json package-lock.json 
 
