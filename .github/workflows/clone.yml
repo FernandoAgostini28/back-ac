@@ -67,7 +67,7 @@ jobs:
       - name: Copy ionic output to web module
         run: |
           cd front-act
-          mkdir www
+          mkdir /www
           mkdir ../front-act/build/public
           cp -r www/* ..front-act/build/public
           ls
