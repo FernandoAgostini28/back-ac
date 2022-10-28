@@ -62,11 +62,15 @@ jobs:
           npm ci
           npm run build --base-href /public/
 
-        # - name: Copy ionic output to web module
-        #   run: |
-        #     cd front-act
-        #     mkdir ../back-act/dist/public
-        #     cp -r www/* ../back-act/dist/public
+          cd front-act
+          mkdir ../front-act/dist/public
+          cp -r www/* ../intranet-web/dist/public
+
+        - name: Copy ionic output to web module
+          run: |
+            cd front-act
+            mkdir ../front-act/dist/public
+            cp -r www/* ../front-act/dist/public
        
       - name: List files in the repository front-act
         run: |
