@@ -61,13 +61,15 @@ jobs:
       # - name: Copy ionic output to web module
       #   run: |
       #     cd front-act
+      #     ls
       #     mkdir front-act/dist/public
       #     cp -r www/* front-act/dist/public
       - name: Copy ionic output to web module
         run: |
           cd front-act
           mkdir ../front-act/build/public
-          
+          cp -r www/* ..front-act/build/public
+
 
       - name: List files in the repository front-act
         run: |
